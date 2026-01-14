@@ -1,0 +1,23 @@
+Package: sdmclimateforecasts
+Title: California Current System Ecological Forecasts
+Version: 0.0.1
+Authors@R: c(
+    person("Jessica A.", "Bolin", email = "jabbolin@ucdavis.edu", role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0002-9868-7511")),
+    person("Rob", "Wildemuth", role = "aut"))
+Description: Insert text!
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports: 
+    lubridate,
+    ncdf4,
+    rerddap,
+    rerddapXtracto
+Collate:
+    'getBathym.R'
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

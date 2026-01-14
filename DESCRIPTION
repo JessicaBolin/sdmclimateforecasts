@@ -21,3 +21,5 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://github.com/JessicaBolin/sdmclimateforecasts
+BugReports: https://github.com/JessicaBolin/sdmclimateforecasts/issues

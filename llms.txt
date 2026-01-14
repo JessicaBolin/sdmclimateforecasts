@@ -1,0 +1,14 @@
+Insert text!
+
+# Package index
+
+## All functions
+
+- [`getBathym()`](https://jessicabolin.github.io/sdmclimateforecasts/reference/getBathym.md)
+  : Extract bathymetry
+
+# Articles
+
+### All vignettes
+
+- [changelog](https://jessicabolin.github.io/sdmclimateforecasts/articles/changelog.md):

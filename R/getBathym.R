@@ -13,8 +13,6 @@
 #'
 #' @export
 #'
-#' @importFrom rerddap
-#' @importFrom rerddapXtracto
 #'
 #' @examples
 #' points <- expand.grid(

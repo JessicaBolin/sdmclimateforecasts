@@ -1,4 +1,28 @@
 url: https://jessicabolin.github.io/sdmclimateforecasts/
 template:
   bootstrap: 5
+  assets:
+    css: "pkgdown/extra.css"
+
+navbar:
+  structure:
+    left:
+      - getting-started
+      - reference
+      - articles
+    right:
+      - github
+
+  components:
+    getting-started:
+      text: "Getting started"
+      href: articles/gettingstarted.html
+
+
+articles:
+- title: Articles
+  navbar: ~
+  contents:
+    - changelog
+    - gettingstarted
 

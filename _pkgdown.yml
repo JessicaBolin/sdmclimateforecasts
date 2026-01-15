@@ -26,3 +26,11 @@ articles:
     - changelog
     - gettingstarted
 
+
+reference:
+- title: Testy test
+  desc: >
+   Test functions
+  contents:
+  - getBathym
+

@@ -1,0 +1,9 @@
+.navbar {
+  background-color: #5FE2BF		 !important; /* Bootstrap green */
+}
+
+/* Change normal link color */
+a {
+  color: #40B5AD;
+}
+

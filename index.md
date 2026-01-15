@@ -1,1 +1,61 @@
-Insert text!
+# `{sdmclimateforecasts}`
+
+## Overview
+
+[sdmclimateforecasts](https://github.com/JessicaBolin/sdmclimateforecasts)
+began as part of NOAA Fisheries’ Changing Ecosystems and Fisheries
+Initiative (CEFI) and is a collaboration of code and modeling among
+researchers at NOAA, University of California Santa Cruz and Davis, and
+University of Washington.
+
+Our OBJECTIVE is to produce a framework to evaluate and communicate
+skill of forecast models that integrate ecological processes for use in
+operational ecosystem-based fisheries management. The code in this
+repository supports the production of species distribution models (SDMs)
+with the intent of creating forecast products for three spatial case
+study applications:
+
+- An index of anchovy availability to support evaluations of California
+  sea lion breeding success in the Southern California Bight (see Fennie
+  et al. 2023 for details)
+- A habitat model of swordfish distribution based on West Coast drift
+  gillnet fishery catches
+- An index of risk of Pacific sardine bycatch in the Pacific mackerel
+  fishery
+
+Our AIMS are to:
+
+- Assess the forecast skill of SDMs using NOAA’s Physical Sciences
+  Laboratory MOM6 and other oceanographic products
+- Create a generalized skill assessment framework for use within the
+  West Coast CEFI Decision Support Team and beyond
+- Communicate confidence in forecast model products at various
+  spatiotemporal scales
+
+## Installation
+
+You can install the development version from GitHub via:
+
+    # install.packages("devtools)
+    devtools::install_github("JessicaBolin/sdmclimateforecasts")
+
+## Usage
+
+Check the Getting Started article to see examples of how to deploy these
+functions.
+
+## Citation
+
+Here is the full bibliographic reference:
+
+> Bolin, J., et al
+
+## Getting help
+
+There are two main places to get help with `{abalone}`:
+
+1.  Email the package maintainer directly at
+    jabbolin(at)ucdavis(dot)edu.
+
+2.  Submit an Issue via the [GitHub
+    repository](https://github.com/JessicaBolin/sdmclimateforecasts).

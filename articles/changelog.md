@@ -12,3 +12,6 @@
 - `usethis::use_mit_license()` - Added MIT licence
 - Added some dummy vignettes
   - `use_vignette("changelog.Rmd")`
+- Added ‘Getting started’ page
+- Updated `_pkgdown.yml`
+- Added home index landing page `README.md`

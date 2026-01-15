@@ -15,3 +15,5 @@
 - Added ‘Getting started’ page
 - Updated `_pkgdown.yml`
 - Added home index landing page `README.md`
+- Added Barb function `getCMEMS_l4chl.R`. Slightly rewrote code to be
+  more tidy and fix duplicate column in output.

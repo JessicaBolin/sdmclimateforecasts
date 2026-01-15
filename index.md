@@ -48,11 +48,12 @@ functions.
 
 Here is the full bibliographic reference:
 
-> Bolin, J., et al
+> insert citation
 
 ## Getting help
 
-There are two main places to get help with `{abalone}`:
+There are two main places to get help with
+[sdmclimateforecasts](https://github.com/JessicaBolin/sdmclimateforecasts):
 
 1.  Email the package maintainer directly at
     jabbolin(at)ucdavis(dot)edu.

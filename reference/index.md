@@ -1,6 +1,8 @@
 # Package index
 
-## All functions
+## Testy test
+
+Test functions
 
 - [`getBathym()`](https://jessicabolin.github.io/sdmclimateforecasts/reference/getBathym.md)
   : Extract bathymetry

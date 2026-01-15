@@ -10,13 +10,18 @@ navbar:
       - getting-started
       - reference
       - articles
+      - change-log
     right:
+      - search
       - github
 
   components:
     getting-started:
       text: "Getting started"
       href: articles/gettingstarted.html
+    change-log:
+      text: Changelog
+      href: articles/changelog.html
 
 
 articles:
@@ -33,4 +38,5 @@ reference:
    Test functions
   contents:
   - getBathym
+  - getCMEMS_l4chl
 

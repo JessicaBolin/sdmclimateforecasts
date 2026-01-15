@@ -17,6 +17,7 @@ Imports:
     rerddapXtracto
 Collate:
     'getBathym.R'
+    'getCMEMS_l4chl.R'
 Suggests: 
     knitr,
     rmarkdown

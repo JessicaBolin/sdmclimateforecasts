@@ -8,7 +8,8 @@ articles:
   gettingstarted: gettingstarted.html
   prediction: prediction.html
   prepare-data: prepare-data.html
-last_built: 2026-01-16T21:33Z
+  skill: skill.html
+last_built: 2026-01-16T21:46Z
 urls:
   reference: https://jessicabolin.github.io/sdmclimateforecasts/reference
   article: https://jessicabolin.github.io/sdmclimateforecasts/articles

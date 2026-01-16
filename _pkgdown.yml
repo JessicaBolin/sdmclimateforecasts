@@ -31,6 +31,7 @@ articles:
     - prepare-data
     - fit-model
     - detailed-diags
+    - prediction
     - changelog
     - gettingstarted
 

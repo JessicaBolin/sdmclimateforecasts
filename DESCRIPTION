@@ -15,7 +15,12 @@ Imports:
     ncdf4,
     rerddap,
     rerddapXtracto,
-    here
+    here,
+    corrplot,
+    sf,
+    tidyr,
+    dplyr,
+    ggplot2
 Collate:
     'getBathym.R'
     'getCMEMS_l4chl.R'

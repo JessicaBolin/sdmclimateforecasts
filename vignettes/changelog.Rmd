@@ -36,3 +36,6 @@ editor_options:
     chunks; draws upon RDS file that I manually saved in `ext/inst` .
 -   Ensured to document() and build_site() before pushing changes to
     Github
+-   Ensured \_pkgdown.yml was updated with correct order of vignettes
+    and imports (and titles all in lower case with hypens to avoid
+    Github Pages errors)

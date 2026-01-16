@@ -84,8 +84,22 @@ head(cps)
 Get mean longitude and latitude
 
 ```{r, CPStrawl5}
-cps$lon <- rowMeans(cps[c("longitude", "stop_longitude")]) 
-cps$lat <- rowMeans(cps[c("latitude", "stop_latitude")])
+cps$lon <- rowMeans(
+  cbind(
+    as.numeric(cps$longitude),
+    as.numeric(cps$stop_longitude)
+  ),
+  na.rm = TRUE
+)
+cps$lat <- rowMeans(
+  cbind(
+    as.numeric(cps$latitude),
+    as.numeric(cps$stop_latitude)
+  ),
+  na.rm = TRUE
+)
+#cps$lon <- rowMeans(cps[c("longitude", "stop_longitude")]) 
+#cps$lat <- rowMeans(cps[c("latitude", "stop_latitude")])
 plot(cps$lon, cps$lat) # Quick for any outlier locations
 
 ```

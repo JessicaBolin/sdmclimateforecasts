@@ -10,8 +10,11 @@ output: rmarkdown::html_vignette
 toc: true
 ---
 
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
 ```
 
 ```{r, loadLibraries, eval = F}

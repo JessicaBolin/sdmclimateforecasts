@@ -14,7 +14,7 @@ Imports:
     lubridate,
     ncdf4,
     rerddap,
-    rerddapXtracto
+    rerddapXtracto,
     here
 Collate:
     'getBathym.R'

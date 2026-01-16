@@ -28,6 +28,7 @@ articles:
 - title: Articles
   navbar: ~
   contents:
+    - prepare-data
     - changelog
     - gettingstarted
 

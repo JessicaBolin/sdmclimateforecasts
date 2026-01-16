@@ -38,6 +38,7 @@
 <li><a class="dropdown-item" href="../articles/prepare-data.html">1. Example data preparation workflow</a></li>
     <li><a class="dropdown-item" href="../articles/fit-model.html">2. Simple model fitting</a></li>
     <li><a class="dropdown-item" href="../articles/detailed-diags.html">3. Detailed diagnostics</a></li>
+    <li><a class="dropdown-item" href="../articles/prediction.html">4. Simple prediction</a></li>
     <li><a class="dropdown-item" href="../articles/changelog.html">changelog</a></li>
     <li><a class="dropdown-item" href="../articles/gettingstarted.html">Getting Started</a></li>
   </ul>
@@ -200,8 +201,8 @@ Download the latest SWFSC CPS trawl observations from ERDDAP</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">cps</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;ERDDAP tabledap&gt; FRDCPSTrawlLHHaulCatch</span></span>
-<span><span class="co">##    Path: [/tmp/Rtmp2aSXcz/R/rerddap/ec2bef583db1dd80f915a36408960a9b.csv]</span></span>
-<span><span class="co">##    Last updated: [2026-01-16 21:31:44.229739]</span></span>
+<span><span class="co">##    Path: [/tmp/Rtmp2mzaiz/R/rerddap/ec2bef583db1dd80f915a36408960a9b.csv]</span></span>
+<span><span class="co">##    Last updated: [2026-01-16 21:37:04.706928]</span></span>
 <span><span class="co">##    File size:    [3.65 mb]</span></span>
 <span><span class="co">## <span style="color: #949494;"># A tibble: 6 × 19</span></span></span>
 <span><span class="co">##   collection cruise  haul haulback_time itis_tsn latitude longitude</span></span>
@@ -228,8 +229,8 @@ Download the latest SWFSC CPS trawl observations from ERDDAP</p>
 <span><span class="va">cps</span><span class="op">$</span><span class="va">pres</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">cps</span><span class="op">$</span><span class="va">subsample_count</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">|</span> <span class="va">cps</span><span class="op">$</span><span class="va">subsample_weight</span> <span class="op">&gt;</span> <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">cps</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;ERDDAP tabledap&gt; FRDCPSTrawlLHHaulCatch</span></span>
-<span><span class="co">##    Path: [/tmp/Rtmp2aSXcz/R/rerddap/ec2bef583db1dd80f915a36408960a9b.csv]</span></span>
-<span><span class="co">##    Last updated: [2026-01-16 21:31:44.229739]</span></span>
+<span><span class="co">##    Path: [/tmp/Rtmp2mzaiz/R/rerddap/ec2bef583db1dd80f915a36408960a9b.csv]</span></span>
+<span><span class="co">##    Last updated: [2026-01-16 21:37:04.706928]</span></span>
 <span><span class="co">##    File size:    [3.65 mb]</span></span>
 <span><span class="co">## <span style="color: #949494;"># A tibble: 6 × 20</span></span></span>
 <span><span class="co">##   collection cruise  haul haulback_time itis_tsn latitude longitude</span></span>

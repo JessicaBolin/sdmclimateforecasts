@@ -78,6 +78,8 @@ Test functions
 
 - [1. Example data preparation
   workflow](https://jessicabolin.github.io/sdmclimateforecasts/articles/prepare-data.md):
+- [3. Detailed
+  diagnostics](https://jessicabolin.github.io/sdmclimateforecasts/articles/detailed-diags.md):
 - [changelog](https://jessicabolin.github.io/sdmclimateforecasts/articles/changelog.md):
 - [Getting
   Started](https://jessicabolin.github.io/sdmclimateforecasts/articles/gettingstarted.md):

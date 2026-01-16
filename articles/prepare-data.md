@@ -138,8 +138,8 @@ head(cps)
 ```
 
     ## <ERDDAP tabledap> FRDCPSTrawlLHHaulCatch
-    ##    Path: [/tmp/RtmpLSItfQ/R/rerddap/ec2bef583db1dd80f915a36408960a9b.csv]
-    ##    Last updated: [2026-01-16 20:45:39.827238]
+    ##    Path: [/tmp/RtmpcjDgvw/R/rerddap/ec2bef583db1dd80f915a36408960a9b.csv]
+    ##    Last updated: [2026-01-16 21:06:13.465024]
     ##    File size:    [3.65 mb]
     ## # A tibble: 6 × 19
     ##   collection cruise  haul haulback_time itis_tsn latitude longitude
@@ -168,8 +168,8 @@ head(cps)
 ```
 
     ## <ERDDAP tabledap> FRDCPSTrawlLHHaulCatch
-    ##    Path: [/tmp/RtmpLSItfQ/R/rerddap/ec2bef583db1dd80f915a36408960a9b.csv]
-    ##    Last updated: [2026-01-16 20:45:39.827238]
+    ##    Path: [/tmp/RtmpcjDgvw/R/rerddap/ec2bef583db1dd80f915a36408960a9b.csv]
+    ##    Last updated: [2026-01-16 21:06:13.465024]
     ##    File size:    [3.65 mb]
     ## # A tibble: 6 × 20
     ##   collection cruise  haul haulback_time itis_tsn latitude longitude

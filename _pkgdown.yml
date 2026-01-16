@@ -29,6 +29,7 @@ articles:
   navbar: ~
   contents:
     - prepare-data
+    - fit-model
     - detailed-diags
     - changelog
     - gettingstarted

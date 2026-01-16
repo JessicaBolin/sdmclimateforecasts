@@ -138,8 +138,8 @@ head(cps)
 ```
 
     ## <ERDDAP tabledap> FRDCPSTrawlLHHaulCatch
-    ##    Path: [/tmp/RtmpcjDgvw/R/rerddap/ec2bef583db1dd80f915a36408960a9b.csv]
-    ##    Last updated: [2026-01-16 21:06:13.465024]
+    ##    Path: [/tmp/Rtmp2aSXcz/R/rerddap/ec2bef583db1dd80f915a36408960a9b.csv]
+    ##    Last updated: [2026-01-16 21:31:44.229739]
     ##    File size:    [3.65 mb]
     ## # A tibble: 6 × 19
     ##   collection cruise  haul haulback_time itis_tsn latitude longitude
@@ -168,8 +168,8 @@ head(cps)
 ```
 
     ## <ERDDAP tabledap> FRDCPSTrawlLHHaulCatch
-    ##    Path: [/tmp/RtmpcjDgvw/R/rerddap/ec2bef583db1dd80f915a36408960a9b.csv]
-    ##    Last updated: [2026-01-16 21:06:13.465024]
+    ##    Path: [/tmp/Rtmp2aSXcz/R/rerddap/ec2bef583db1dd80f915a36408960a9b.csv]
+    ##    Last updated: [2026-01-16 21:31:44.229739]
     ##    File size:    [3.65 mb]
     ## # A tibble: 6 × 20
     ##   collection cruise  haul haulback_time itis_tsn latitude longitude
@@ -189,8 +189,22 @@ head(cps)
 Get mean longitude and latitude
 
 ``` r
-cps$lon <- rowMeans(cps[c("longitude", "stop_longitude")]) 
-cps$lat <- rowMeans(cps[c("latitude", "stop_latitude")])
+cps$lon <- rowMeans(
+  cbind(
+    as.numeric(cps$longitude),
+    as.numeric(cps$stop_longitude)
+  ),
+  na.rm = TRUE
+)
+cps$lat <- rowMeans(
+  cbind(
+    as.numeric(cps$latitude),
+    as.numeric(cps$stop_latitude)
+  ),
+  na.rm = TRUE
+)
+#cps$lon <- rowMeans(cps[c("longitude", "stop_longitude")]) 
+#cps$lat <- rowMeans(cps[c("latitude", "stop_latitude")])
 plot(cps$lon, cps$lat) # Quick for any outlier locations
 ```
 

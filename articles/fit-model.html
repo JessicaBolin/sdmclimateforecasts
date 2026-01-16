@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>3. Detailed diagnostics • sdmclimateforecasts</title>
+<title>2. Simple model fitting • sdmclimateforecasts</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="3. Detailed diagnostics">
+<meta property="og:title" content="2. Simple model fitting">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -62,14 +62,14 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>3. Detailed diagnostics</h1>
+      <h1>2. Simple model fitting</h1>
                         <h4 data-toc-skip class="author">Robert
 Wildermuth</h4>
             
             <h4 data-toc-skip class="date">2025-9-24</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/JessicaBolin/sdmclimateforecasts/blob/master/vignettes/detailed-diags.Rmd" class="external-link"><code>vignettes/detailed-diags.Rmd</code></a></small>
-      <div class="d-none name"><code>detailed-diags.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/JessicaBolin/sdmclimateforecasts/blob/master/vignettes/fit-model.Rmd" class="external-link"><code>vignettes/fit-model.Rmd</code></a></small>
+      <div class="d-none name"><code>fit-model.Rmd</code></div>
     </div>
 
     
@@ -85,12 +85,11 @@ Wildermuth</h4>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/gbm-developers/gbm" class="external-link">gbm</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster/sdm/" class="external-link">dismo</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://sjmgarnier.github.io/viridis/" class="external-link">viridis</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ggrothendieck/sqldf" class="external-link">sqldf</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="st">"./R/buildSDM.R"</span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
-<h2 id="calculate-some-detailed-sdm-fit-diagnostics">Calculate some detailed SDM fit diagnostics<a class="anchor" aria-label="anchor" href="#calculate-some-detailed-sdm-fit-diagnostics"></a>
+<h2 id="fit-an-sdm-model-and-calculate-basic-diagnostics">Fit an SDM model and calculate basic diagnostics<a class="anchor" aria-label="anchor" href="#fit-an-sdm-model-and-calculate-basic-diagnostics"></a>
 </h2>
-<p>Load the data and split into test and training sets</p>
+<p>Load the training dataset and fit the</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load biological observation data with environmental covariates extracted</span></span>
 <span><span class="co"># This is now updated to include variables extracted at a lag of 1 year, which are used to calculate</span></span>
@@ -119,24 +118,41 @@ Wildermuth</h4>
 <span><span class="va">train</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">subObs</span>, <span class="va">year</span> <span class="op">&lt;=</span> <span class="va">terminalYr</span><span class="op">)</span></span>
 <span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">subObs</span>, <span class="va">year</span> <span class="op">&gt;</span> <span class="va">terminalYr</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">&lt;=</span> <span class="op">(</span><span class="va">terminalYr</span> <span class="op">+</span> <span class="va">yrsToForecast</span><span class="op">)</span><span class="op">)</span> <span class="co"># Observations after the training data ends</span></span>
 <span></span>
-<span><span class="co"># Assume your dataset is named 'data' and the response variable is 'presence'</span></span>
-<span><span class="co"># Create an 75-25 train-test split</span></span>
-<span><span class="va">trainIndex</span> <span class="op">&lt;-</span> <span class="fu">createDataPartition</span><span class="op">(</span><span class="va">DataInput_Fit</span><span class="op">$</span><span class="va">PresAbs</span>, p <span class="op">=</span> <span class="fl">0.75</span>, list <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="co"># Subset data</span></span>
-<span><span class="va">train</span> <span class="op">&lt;-</span> <span class="va">DataInput_Fit</span><span class="op">[</span><span class="va">trainIndex</span>, <span class="op">]</span></span>
-<span><span class="va">test</span> <span class="op">&lt;-</span> <span class="va">DataInput_Fit</span><span class="op">[</span><span class="op">-</span><span class="va">trainIndex</span>, <span class="op">]</span></span></code></pre></div>
-<p>Do different levels of cross-validation #!!RW: need to define these
-functions, or save and source them from 2_Fit_model.R</p>
+<span><span class="va">mod1</span> <span class="op">&lt;-</span> <span class="fu">buildSDM</span><span class="op">(</span>sdmType <span class="op">=</span> <span class="va">sdmType</span>, train <span class="op">=</span> <span class="va">train</span>, varNames <span class="op">=</span> <span class="va">varNames</span>, targetName <span class="op">=</span> <span class="va">targetName</span>, </span>
+<span>                   k <span class="op">=</span> <span class="va">k</span>, tc <span class="op">=</span> <span class="va">tc</span>, lr <span class="op">=</span> <span class="va">lr</span>, max.trees <span class="op">=</span> <span class="va">max.trees</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod1</span><span class="op">)</span> <span class="co"># If you want to check convergence etc. But GAMs/BRTs nearly always converge unless parameters v inappropriate</span></span>
+<span>  <span class="co"># gbm.step prints model convergence progress as it goes, so you'll see if the number of trees is too small (&lt; ~ 1500)</span></span>
+<span>  </span>
+<span><span class="co"># For GAMS</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/concurvity.html" class="external-link">concurvity</a></span><span class="op">(</span><span class="va">mod1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.check.html" class="external-link">gam.check</a></span><span class="op">(</span><span class="va">mod1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Percent deviance explained: SINGLE model</span></span>
+<span><span class="co">#((null deviance - residual deviance)/null deviance)*100</span></span>
+<span><span class="va">dev_eval</span><span class="op">=</span><span class="kw">function</span><span class="op">(</span><span class="va">model_object</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">null</span> <span class="op">&lt;-</span> <span class="va">model_object</span><span class="op">$</span><span class="va">self.statistics</span><span class="op">$</span><span class="va">mean.null</span></span>
+<span>  <span class="va">res</span> <span class="op">&lt;-</span> <span class="va">model_object</span><span class="op">$</span><span class="va">self.statistics</span><span class="op">$</span><span class="va">mean.resid</span></span>
+<span>  <span class="va">dev</span><span class="op">=</span><span class="op">(</span><span class="op">(</span><span class="va">null</span> <span class="op">-</span> <span class="va">res</span><span class="op">)</span><span class="op">/</span><span class="va">null</span><span class="op">)</span><span class="op">*</span><span class="fl">100</span> </span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">dev</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="fu">dev_eval</span><span class="op">(</span><span class="va">mod1</span><span class="op">)</span><span class="co"># deviance explained by the model</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="evaluate-diagnostics-of-models-fit-to-data">Evaluate diagnostics of model’s fit to data<a class="anchor" aria-label="anchor" href="#evaluate-diagnostics-of-models-fit-to-data"></a>
+</h3>
+<p>Calculate some basic diagnostics</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Leave-one-out cross-validation</span></span>
-<span><span class="va">SDR.loo.eval</span> <span class="op">&lt;-</span><span class="fu">LOO_eval</span><span class="op">(</span><span class="va">DataInput_Fit</span>,gbm.x<span class="op">=</span><span class="va">gbm.x</span>, gbm.y<span class="op">=</span><span class="st">"PresAbs"</span>,lr<span class="op">=</span><span class="fl">0.01</span>, tc<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># Return some simple diagnostics</span></span>
+<span><span class="va">evalOutputs</span> <span class="op">&lt;-</span> <span class="fu">runDiagnostics</span><span class="op">(</span>mod <span class="op">=</span> <span class="va">mod1</span>, max.trees <span class="op">=</span> <span class="va">max.trees</span><span class="op">)</span></span></code></pre></div>
+<p>Visualize the results</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># For GAMs</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mod1</span>, pages <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># test with 25% of the full dataset</span></span>
-<span><span class="va">SDR.7525.eval</span> <span class="op">&lt;-</span> <span class="fu">eval_7525</span><span class="op">(</span><span class="va">DataInput_Fit</span>,gbm.x<span class="op">=</span><span class="va">gbm.x</span>, gbm.y<span class="op">=</span><span class="st">"PresAbs"</span>,lr<span class="op">=</span><span class="fl">0.01</span>, tc<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="co"># For BRTs</span></span>
+<span><span class="fu">gbm.plot</span><span class="op">(</span><span class="va">res1.tc3.lr01</span>, smooth<span class="op">=</span><span class="cn">TRUE</span>, plot.layout <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">4</span><span class="op">)</span>, write.title<span class="op">=</span><span class="cn">T</span><span class="op">)</span> <span class="co">#response curves/ fitted functions</span></span>
 <span></span>
-<span><span class="co"># comare to full model fit </span></span>
-<span><span class="co">#!!RW: Is this just the same as buildSDM()?</span></span>
-<span><span class="va">SDR.100.eval</span> <span class="op">&lt;-</span> <span class="fu">eval_100_percent</span><span class="op">(</span><span class="va">DataInput_Fit</span>,gbm.x<span class="op">=</span><span class="va">gbm.x</span>, gbm.y<span class="op">=</span><span class="st">"PresAbs"</span>,lr<span class="op">=</span><span class="fl">0.01</span>, tc<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">ggInfluence</span><span class="op">(</span><span class="va">res1.tc3.lr01</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

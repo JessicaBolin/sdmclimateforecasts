@@ -15,6 +15,7 @@ Imports:
     ncdf4,
     rerddap,
     rerddapXtracto
+    here
 Collate:
     'getBathym.R'
     'getCMEMS_l4chl.R'

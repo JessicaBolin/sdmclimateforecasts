@@ -99,6 +99,23 @@ with <code>devtools::document()</code>
 </li>
 <li>Added Barb function <code>getCMEMS_l4chl.R</code>. Slightly rewrote
 code to be more tidy and fix duplicate column in output.</li>
+</ul>
+<blockquote>
+<p>2026-01-16: adding new vignettes</p>
+</blockquote>
+<ul>
+<li>Added five new vignettes, have <code>eval=F</code> in all R chunks
+to prevent evaluation (code does not work as I don’t have all data
+required)</li>
+<li>
+<code>prepare-data.rmd</code> only vignette that does not have
+eval=F in most chunks; draws upon RDS file that I manually saved in
+<code>ext/inst</code> .</li>
+<li>Ensured to document() and build_site() before pushing changes to
+Github</li>
+<li>Ensured _pkgdown.yml was updated with correct order of vignettes and
+imports (and titles all in lower case with hypens to avoid Github Pages
+errors)</li>
 </ul></main>
 </div>
 

@@ -17,3 +17,15 @@
 - Added home index landing page `README.md`
 - Added Barb function `getCMEMS_l4chl.R`. Slightly rewrote code to be
   more tidy and fix duplicate column in output.
+
+> 2026-01-16: adding new vignettes
+
+- Added five new vignettes, have `eval=F` in all R chunks to prevent
+  evaluation (code does not work as I don’t have all data required)
+- `prepare-data.rmd` only vignette that does not have eval=F in most
+  chunks; draws upon RDS file that I manually saved in `ext/inst` .
+- Ensured to document() and build_site() before pushing changes to
+  Github
+- Ensured \_pkgdown.yml was updated with correct order of vignettes and
+  imports (and titles all in lower case with hypens to avoid Github
+  Pages errors)
